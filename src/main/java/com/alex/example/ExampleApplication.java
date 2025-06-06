@@ -13,12 +13,7 @@ public class ExampleApplication {
 	{
 
 		var ctx = SpringApplication.run(ExampleApplication.class, args);
-		MyFirstService obj1 = ctx.getBean(MyFirstService.class);
-		 System.out.println(obj1.tellStory());
-		 System.out.println(obj1.JavaVersion());
-		 System.out.println(obj1.readProperty());
-		 System.out.println(obj1.getMyName());
-		 System.out.println(obj1.getLocation());
+
 	}
 
 
