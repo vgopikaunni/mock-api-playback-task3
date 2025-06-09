@@ -5,14 +5,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.ContentCachingRequestWrapper;
+import org.springframework.web.util.ContentCachingResponseWrapper;
+
+import java.nio.charset.StandardCharsets;
 
 public class MyInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull Object handler) throws Exception
-    {
-        System.out.println("Pre handler triggered");
-        System.out.println(request.getRequestURI()+"\n"+request.getPathInfo());
+    public boolean preHandle(@NonNull HttpServletRequest request,
+                             @NonNull HttpServletResponse response,
+                             @NonNull Object handler) {
+
+        System.out.println("PreHandle triggered");
         return true;
     }
 
@@ -25,8 +30,29 @@ public class MyInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, Exception ex) throws Exception
-    {
+    public void afterCompletion(@NonNull HttpServletRequest request,
+                                @NonNull HttpServletResponse response,
+                                @NonNull Object handler,
+                                Exception ex) throws Exception {
         System.out.println("After handler triggered");
+
+        //Printing the request body
+        if (request instanceof ContentCachingRequestWrapper wrappedRequest) {
+            byte[] buf = wrappedRequest.getContentAsByteArray();
+            if (buf.length > 0) {
+                String requestBody = new String(buf, StandardCharsets.UTF_8);
+                System.out.println("Request Body (after controller): " + requestBody);
+            }
+        }
+
+        //Printing the response body
+        if (response instanceof ContentCachingResponseWrapper wrappedResponse) {
+            byte[] buf = wrappedResponse.getContentAsByteArray();
+            if (buf.length > 0) {
+                String responseBody = new String(buf, StandardCharsets.UTF_8);
+                System.out.println("Response Body: " + responseBody);
+            }
+        }
     }
+
 }
