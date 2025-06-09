@@ -52,6 +52,10 @@ public class MyInterceptor implements HandlerInterceptor {
                 String responseBody = new String(buf, StandardCharsets.UTF_8);
                 System.out.println("Response Body: " + responseBody);
             }
+            else
+            {
+                System.out.println("Response Body empty");
+            }
         }
     }
 
