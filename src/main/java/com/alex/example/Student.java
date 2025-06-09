@@ -1,63 +1,58 @@
 package com.alex.example;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Student
-{
+public class Student {
+
     @Id
-    private int StudentId;
-    private String StudentName;
-    private String StudentEmail;
-    private int StudentAge;
+    private int studentId;
+    private String studentName;
 
+    @Column(unique = true)
+    private String studentEmail;
+    private int studentAge;
 
-    public Student(){}
+    public Student() {}
 
-    public Student(int StudentID, String StudentName, String StudentEmail, int StudentAge)
-    {
-        this.StudentAge = StudentAge;
-        this.StudentName = StudentName;
-        this.StudentEmail = StudentEmail;
+    public Student(int studentId, String studentName, String studentEmail, int studentAge) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.studentEmail = studentEmail;
+        this.studentAge = studentAge;
     }
 
     public int getStudentId() {
-        return StudentId;
+        return studentId;
     }
 
     public void setStudentId(int studentId) {
-        StudentId = studentId;
+        this.studentId = studentId;
     }
 
     public String getStudentName() {
-        return StudentName;
+        return studentName;
     }
 
     public void setStudentName(String studentName) {
-        StudentName = studentName;
+        this.studentName = studentName;
     }
 
     public String getStudentEmail() {
-        return StudentEmail;
+        return studentEmail;
     }
 
     public void setStudentEmail(String studentEmail) {
-        StudentEmail = studentEmail;
+        this.studentEmail = studentEmail;
     }
 
     public int getStudentAge() {
-        return StudentAge;
+        return studentAge;
     }
 
     public void setStudentAge(int studentAge) {
-        StudentAge = studentAge;
+        this.studentAge = studentAge;
     }
 }
-
-
-
-
-
-
