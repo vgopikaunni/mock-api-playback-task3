@@ -1,4 +1,4 @@
-package com.alex.example;
+package com.gopu.example;
 
 
 import org.springframework.context.annotation.Configuration;

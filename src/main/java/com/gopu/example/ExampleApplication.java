@@ -1,4 +1,4 @@
-package com.alex.example;
+package com.gopu.example;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.alex.example;
+package com.gopu.example;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
